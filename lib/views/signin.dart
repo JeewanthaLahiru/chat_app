@@ -32,6 +32,36 @@ class _SignInState extends State<SignIn> {
               alignment: Alignment.centerRight,
               child: Text("Forget Password?"),
             ),
+            SizedBox(height: 12.0,),
+            Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25.0),
+                color: Colors.blue,
+              ),
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(vertical: 15.0),
+              child: Text("Sign in",
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
+            ),
+            SizedBox(height: 12.0,),
+            Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25.0),
+                color: Colors.grey,
+              ),
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(vertical: 15.0),
+              child: Text("Sign in with Google",
+                style: TextStyle(
+                    color: Colors.white
+                ),
+              ),
+            ),
           ],
         ),
       ),
