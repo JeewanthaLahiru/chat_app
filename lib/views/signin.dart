@@ -1,4 +1,5 @@
 import 'package:chat_app/views/widget.dart';
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
 class SignIn extends StatefulWidget {
@@ -14,8 +15,10 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       appBar: appBarMain(context),
       body: Container(
+        alignment: Alignment.bottomCenter,
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               decoration: InputDecoration(
@@ -52,7 +55,7 @@ class _SignInState extends State<SignIn> {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25.0),
-                color: Colors.grey,
+                color: Colors.black,
               ),
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -62,6 +65,17 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
             ),
+            SizedBox(height: 18.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Don't have an account? "),
+                Text("Register now" , style: TextStyle(
+                  decoration: TextDecoration.underline,
+                ),),
+              ],
+            ),
+            SizedBox(height: 70.0,)
           ],
         ),
       ),
