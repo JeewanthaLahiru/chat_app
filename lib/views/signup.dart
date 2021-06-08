@@ -14,6 +14,11 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    final TextEditingController _name = TextEditingController();
+    final TextEditingController _email = TextEditingController();
+    final TextEditingController _password = TextEditingController();
+
     return Scaffold(
       body: Column(
         children: [
@@ -52,14 +57,14 @@ class _SignUpState extends State<SignUp> {
           Container(
               width: size.width,
               alignment: Alignment.center,
-              child: field(size, "Name", Icons.verified_user)
+              child: field(size, "Name", Icons.verified_user, _name)
           ),
           Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: Container(
               width: size.width,
               alignment: Alignment.center,
-              child: field(size, "Email", Icons.email),
+              child: field(size, "Email", Icons.email, _email),
             ),
           ),
           Padding(
@@ -67,7 +72,7 @@ class _SignUpState extends State<SignUp> {
             child: Container(
               width: size.width,
               alignment: Alignment.center,
-              child: field(size, "Password", Icons.password),
+              child: field(size, "Password", Icons.password, _password),
             ),
           ),
           Container(
@@ -101,11 +106,12 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget field(Size size, String hintText, IconData icon){
+  Widget field(Size size, String hintText, IconData icon, TextEditingController cont){
     return Container(
       height: size.height/15,
       width: size.width/ 1.3,
       child: TextField(
+        controller: cont,
         decoration: InputDecoration(
           prefixIcon: Icon(icon),
           hintText: hintText,
