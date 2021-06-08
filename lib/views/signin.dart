@@ -22,69 +22,79 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: size.height/20,
-          ),
-          Container(
-            alignment: Alignment.centerLeft,
-            width: size.width/1.1,
-            child: IconButton(
-                onPressed: (){},
-                icon: Icon(Icons.arrow_back_ios)
-            ),
-          ),
-          SizedBox(
-            height: size.height/50,
-          ),
-          Container(
-            width: size.width/1.3,
-            child: Text("Welcome", style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold
-            ),),
-          ),
-          Container(
-            width: size.width/1.3,
-            child: Text("Sign in to continue", style: TextStyle(
-                fontSize: 24,
-                color: Colors.grey,
-                fontWeight: FontWeight.w500
-            ),),
-          ),
-          SizedBox(
-            height: size.height/10,
-          ),
-          Container(
-              width: size.width,
-              alignment: Alignment.center,
-              child: field(size, "Email", Icons.email, _email)
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
+      body: isLoading?
+          Center(
             child: Container(
-              width: size.width,
-              alignment: Alignment.center,
-              child: field(size, "Password", Icons.password, _password),
-              ),
-          ),
-          SizedBox(
-            height:size.height/ 20 ,
-          ),
-          customButton(size),
-          SizedBox(
-            height: size.height/30,
-          ),
-          GestureDetector(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUp())),
-            child: Text(
-              "Create Account",
-              style: TextStyle(color: Colors.blue),
+              height: size.height/20,
+              width: size.height/20,
+              child: CircularProgressIndicator()
             ),
           )
+          : SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height/20,
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              width: size.width/1.1,
+              child: IconButton(
+                  onPressed: (){},
+                  icon: Icon(Icons.arrow_back_ios)
+              ),
+            ),
+            SizedBox(
+              height: size.height/50,
+            ),
+            Container(
+              width: size.width/1.3,
+              child: Text("Welcome", style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold
+              ),),
+            ),
+            Container(
+              width: size.width/1.3,
+              child: Text("Sign in to continue", style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500
+              ),),
+            ),
+            SizedBox(
+              height: size.height/10,
+            ),
+            Container(
+                width: size.width,
+                alignment: Alignment.center,
+                child: field(size, "Email", Icons.email, _email)
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 18.0),
+              child: Container(
+                width: size.width,
+                alignment: Alignment.center,
+                child: field(size, "Password", Icons.password, _password),
+                ),
+            ),
+            SizedBox(
+              height:size.height/ 20 ,
+            ),
+            customButton(size),
+            SizedBox(
+              height: size.height/30,
+            ),
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUp())),
+              child: Text(
+                "Create Account",
+                style: TextStyle(color: Colors.blue),
+              ),
+            )
 
-        ],
+          ],
+        ),
       ),
     );
   }
