@@ -87,19 +87,22 @@ class _SignInState extends State<SignIn> {
   }
 
   Widget customButton(Size size){
-    return Container(
-      height: size.height/ 14,
-      width: size.width/ 1.3,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.blue
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        "Login",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 22
+    return GestureDetector(
+      onTap: (){},
+      child: Container(
+        height: size.height/ 14,
+        width: size.width/ 1.3,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.blue
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          "Login",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 22
+          ),
         ),
       ),
     );

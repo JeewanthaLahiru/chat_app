@@ -76,19 +76,22 @@ class _SignUpState extends State<SignUp> {
               child: field(size, "Password", Icons.password, _password),
             ),
           ),
-          Container(
-            height: size.height/ 14,
-            width: size.width/ 1.3,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.blue
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              "Signup",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22
+          GestureDetector(
+            onTap: (){},
+            child: Container(
+              height: size.height/ 14,
+              width: size.width/ 1.3,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.blue
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                "Signup",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22
+                ),
               ),
             ),
           ),
