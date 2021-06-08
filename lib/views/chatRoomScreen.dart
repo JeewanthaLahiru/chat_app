@@ -9,7 +9,7 @@ class ChatRoomScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: TextButton(
-          onPressed: () => logOut(),
+          onPressed: () => logOut(context),
           child: Text("Logut"),
         ),
       ),
