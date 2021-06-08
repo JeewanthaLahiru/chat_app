@@ -1,5 +1,8 @@
 
+import 'package:chat_app/views/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 Future<User?> createAccount(String name, String email, String password) async{
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -39,11 +42,13 @@ Future<User?> signIn(String email, String password) async{
   }
 }
 
-Future logOut() async {
+Future logOut(BuildContext context) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try{
-    await _auth.signOut();
+    await _auth.signOut().then((value) {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => SignIn()));
+    });
   }catch(e){
     print("error");
   }
