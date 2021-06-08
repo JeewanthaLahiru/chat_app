@@ -11,13 +11,14 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    final TextEditingController _name = TextEditingController();
-    final TextEditingController _email = TextEditingController();
-    final TextEditingController _password = TextEditingController();
 
     return Scaffold(
       body: Column(

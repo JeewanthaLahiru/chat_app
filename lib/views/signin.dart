@@ -11,6 +11,10 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -52,14 +56,14 @@ class _SignInState extends State<SignIn> {
           Container(
               width: size.width,
               alignment: Alignment.center,
-              child: field(size, "Email", Icons.email)
+              child: field(size, "Email", Icons.email, _email)
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 18.0),
             child: Container(
               width: size.width,
               alignment: Alignment.center,
-              child: field(size, "Password", Icons.password),
+              child: field(size, "Password", Icons.password, _password),
               ),
           ),
           SizedBox(
@@ -101,11 +105,12 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Widget field(Size size, String hintText, IconData icon){
+  Widget field(Size size, String hintText, IconData icon, TextEditingController cont){
     return Container(
       height: size.height/15,
       width: size.width/ 1.3,
       child: TextField(
+        controller: cont,
         decoration: InputDecoration(
           prefixIcon: Icon(icon),
           hintText: hintText,
