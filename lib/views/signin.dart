@@ -1,4 +1,5 @@
 import 'package:chat_app/methods.dart';
+import 'package:chat_app/views/chatRoomScreen.dart';
 import 'package:chat_app/views/signup.dart';
 import 'package:chat_app/views/widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -111,6 +112,7 @@ class _SignInState extends State<SignIn> {
               setState(() {
                 isLoading = false;
               });
+              Navigator.push(context, MaterialPageRoute(builder: (_) => ChatRoomScreen()));
               print("login successfull");
             }
           });
