@@ -1,3 +1,4 @@
+import 'package:chat_app/views/signup.dart';
 import 'package:chat_app/views/widget.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -12,71 +13,106 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: appBarMain(context),
-      body: Container(
-        alignment: Alignment.bottomCenter,
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: "email"
-              ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: size.height/20,
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            width: size.width/1.1,
+            child: IconButton(
+                onPressed: (){},
+                icon: Icon(Icons.arrow_back_ios)
             ),
-            TextField(
-              decoration: InputDecoration(
-                  hintText: "password"
-              ),
-            ),
-            SizedBox(height: 12.0,),
-            Container(
-              alignment: Alignment.centerRight,
-              child: Text("Forget Password?"),
-            ),
-            SizedBox(height: 12.0,),
-            Container(
+          ),
+          SizedBox(
+            height: size.height/50,
+          ),
+          Container(
+            width: size.width/1.3,
+            child: Text("Welcome", style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold
+            ),),
+          ),
+          Container(
+            width: size.width/1.3,
+            child: Text("Sign in to continue", style: TextStyle(
+                fontSize: 24,
+                color: Colors.grey,
+                fontWeight: FontWeight.w500
+            ),),
+          ),
+          SizedBox(
+            height: size.height/10,
+          ),
+          Container(
+              width: size.width,
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25.0),
-                color: Colors.blue,
-              ),
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.symmetric(vertical: 15.0),
-              child: Text("Sign in",
-                style: TextStyle(
-                  color: Colors.white
-                ),
-              ),
-            ),
-            SizedBox(height: 12.0,),
-            Container(
+              child: field(size, "Email", Icons.email)
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 18.0),
+            child: Container(
+              width: size.width,
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25.0),
-                color: Colors.black,
+              child: field(size, "Password", Icons.password),
               ),
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.symmetric(vertical: 15.0),
-              child: Text("Sign in with Google",
-                style: TextStyle(
-                    color: Colors.white
-                ),
-              ),
+          ),
+          SizedBox(
+            height:size.height/ 20 ,
+          ),
+          customButton(size),
+          SizedBox(
+            height: size.height/30,
+          ),
+          GestureDetector(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SignUp())),
+            child: Text(
+              "Create Account",
+              style: TextStyle(color: Colors.blue),
             ),
-            SizedBox(height: 18.0,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Don't have an account? "),
-                Text("Register now" , style: TextStyle(
-                  decoration: TextDecoration.underline,
-                ),),
-              ],
-            ),
-            SizedBox(height: 70.0,)
-          ],
+          )
+
+        ],
+      ),
+    );
+  }
+
+  Widget customButton(Size size){
+    return Container(
+      height: size.height/ 14,
+      width: size.width/ 1.3,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.blue
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        "Login",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 22
+        ),
+      ),
+    );
+  }
+
+  Widget field(Size size, String hintText, IconData icon){
+    return Container(
+      height: size.height/15,
+      width: size.width/ 1.3,
+      child: TextField(
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon),
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.grey),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
       ),
     );

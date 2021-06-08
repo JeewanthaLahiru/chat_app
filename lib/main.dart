@@ -1,7 +1,11 @@
 import 'package:chat_app/views/signin.dart';
+import 'package:chat_app/views/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   runApp(MyApp());
 }
 
