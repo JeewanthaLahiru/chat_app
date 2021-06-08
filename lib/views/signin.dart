@@ -1,3 +1,4 @@
+import 'package:chat_app/methods.dart';
 import 'package:chat_app/views/signup.dart';
 import 'package:chat_app/views/widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +15,8 @@ class _SignInState extends State<SignIn> {
 
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +91,23 @@ class _SignInState extends State<SignIn> {
 
   Widget customButton(Size size){
     return GestureDetector(
-      onTap: (){},
+      onTap: (){
+        if(_email.text.isNotEmpty && _password.text.isNotEmpty){
+          setState(() {
+            isLoading = true;
+          });
+          signIn(_email.text, _password.text).then((user){
+            if(user != null){
+              setState(() {
+                isLoading = false;
+              });
+              print("login successfull");
+            }
+          });
+        }else{
+          print("please enter email and password");
+        }
+      },
       child: Container(
         height: size.height/ 14,
         width: size.width/ 1.3,
